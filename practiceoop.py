@@ -28,5 +28,13 @@ car = Car("Toyota", "Fortuner")
 
 car.display()
 car.start()
+'''
+OUTPUT:
+
+Brand: Toyota
+Model: Fortuner
+Toyota Fortuner is starting
+
+'''
 
 
