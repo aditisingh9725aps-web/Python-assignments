@@ -44,6 +44,11 @@ student1 = Report("Adi", 1593, 96)
 student1.display_report()
 
 print()
+# Change college name using class method
+Report.change_college("MIT ADT School of Engineering")
+
+student2 = Report("Adday", 1594, 87)
+student2.display_report()
 '''
 OUTPUT:
 
@@ -61,8 +66,8 @@ Result : PASS
  STUDENT REPORT
 ========================================
 College : MIT ADT School of Engineering
-Name : Adi
-Roll No : 1593
+Name : Adday
+Roll No : 1594
 Marks : 87
 Result : PASS
 ========================================
@@ -70,8 +75,5 @@ Result : PASS
 '''
 
 
-# Change college name using class method
-Report.change_college("MIT ADT School of Engineering")
 
-student2 = Report("Adi", 1593, 87)
-student2.display_report()
+
