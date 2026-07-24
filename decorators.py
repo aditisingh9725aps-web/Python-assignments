@@ -32,4 +32,22 @@ print(next(my_iter))
 print(next(my_iter))
 print(next(my_iter))
 
+'''
+OUTPUT:
+
+something is happening before the function is called.
+Hello!
+something is happening after the function is called.
+5
+4
+3
+2
+1
+8
+1
+2
+3
+
+'''
+
 
