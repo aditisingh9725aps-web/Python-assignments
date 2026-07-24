@@ -51,3 +51,31 @@ library.display_books()
 
 library.return_book("Python")
 library.display_books()
+
+'''
+OUTPUT:
+
+Python added successfully.
+Java added successfully.
+C++ added successfully.
+
+Books in Library:
+Python - Available
+Java - Available
+C++ - Available
+
+You borrowed: Python
+
+Books in Library:
+Python - Borrowed
+Java - Available
+C++ - Available
+
+You returned: Python
+
+Books in Library:
+Python - Available
+Java - Available
+C++ - Available
+
+'''
