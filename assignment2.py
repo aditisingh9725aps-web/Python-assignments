@@ -44,6 +44,31 @@ student1 = Report("Adi", 1593, 96)
 student1.display_report()
 
 print()
+'''
+OUTPUT:
+
+========================================
+ STUDENT REPORT
+========================================
+College : MIT ADT University
+Name : Adi
+Roll No : 1593
+Marks : 96
+Result : PASS
+========================================
+
+========================================
+ STUDENT REPORT
+========================================
+College : MIT ADT School of Engineering
+Name : Adi
+Roll No : 1593
+Marks : 87
+Result : PASS
+========================================
+
+'''
+
 
 # Change college name using class method
 Report.change_college("MIT ADT School of Engineering")
