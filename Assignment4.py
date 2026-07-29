@@ -44,6 +44,5 @@ print("Result using Tabulation  :", result2)
 # ---------------- SAMPLE OUTPUT ----------------
 #
 # Enter a number: 12
-#
 # Result using Memoization : 144
 # Result using Tabulation  : 144
