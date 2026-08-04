@@ -66,3 +66,11 @@ lcs, length = longest_common_subsequence(sequence1, sequence2)
 print("\nLongest Common Subsequence:", lcs)
 
 print("Length of LCS:", length)
+
+# Sample Input:
+# sample
+# apple
+
+# Sample Output:
+# Longest Common Subsequence: aple
+# Length of LCS: 4
