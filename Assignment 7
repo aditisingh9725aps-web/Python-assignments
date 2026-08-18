@@ -1,199 +1,84 @@
-# ============================================================
-# UNIT 3 - PYTHON ASSIGNMENTS
-# ============================================================
+print("1. WRITE OPERATION")
 
-# ============================================================
-# ASSIGNMENT 1 - FILE HANDLING
-# ============================================================
+file = open("sample.txt", "w")
+file.write("Hello, this is a Python file.\n")
+file.write("This is an example of file handling.")
+file.close()
 
-# Create input.txt
-with open("input.txt", "w") as f:
-    f.write("Python is powerful.\n")
-    f.write("It is widely used in AI.\n")
-    f.write("File handling is essential.\n")
-    f.write("This is the fourth line.\n")
+print("Data written successfully.")
 
-# Read the file
-with open("input.txt", "r") as f:
-    lines = f.readlines()
+print("\n2. READ OPERATION")
 
-# Count lines
-line_count = len(lines)
+file = open("sample.txt", "r")
+data = file.read()
+print(data)
+file.close()
 
-# Extract first two lines
-first_two = lines[:2]
+print("\n3. READLINE() OPERATION")
 
-# Write first two lines into output.txt
-with open("output.txt", "w") as f:
-    f.writelines(first_two)
+file = open("sample.txt", "r")
+line = file.readline()
+print(line)
+file.close()
 
-print("ASSIGNMENT 1")
-print("Total number of lines:", line_count)
-print("First two lines written to output.txt")
+print("4. READLINES() OPERATION")
 
+file = open("sample.txt", "r")
+lines = file.readlines()
+print(lines)
+file.close()
 
-# Output:
-# ASSIGNMENT 1
-# Total number of lines: 4
-# First two lines written to output.txt
+print("\n5. READ FILE LINE BY LINE")
 
+file = open("sample.txt", "r")
 
-# ============================================================
-# ASSIGNMENT 2 - CSV TO JSON CONVERSION
-# ============================================================
+for line in file:
+    print(line.strip())
 
-import csv
-import json
+file.close()
 
-# Create input.csv
-with open("input.csv", "w", newline="") as f:
-    writer = csv.writer(f)
-    writer.writerow(["Name", "Age", "City"])
-    writer.writerow(["Rashmi", 30, "Pune"])
-    writer.writerow(["Amit", 25, "Mumbai"])
-    writer.writerow(["Sneha", 28, "Nashik"])
+print("\n6. APPEND OPERATION")
 
-# Read CSV file
-csv_data = []
+file = open("sample.txt", "a")
+file.write("\nThis line is added using append.")
+file.close()
 
-with open("input.csv", "r") as f:
-    reader = csv.DictReader(f)
-    for row in reader:
-        csv_data.append(row)
+print("Data appended successfully.")
 
-# Convert to JSON
-json_data = json.dumps(csv_data, indent=4)
+print("\n7. WRITE OPERATION")
 
-# Write JSON file
-with open("output.json", "w") as f:
-    f.write(json_data)
+file = open("newfile.txt", "w")
+file.write("This is another file.")
+file.close()
 
-print("\nASSIGNMENT 2")
-print("CSV data has been converted to JSON and saved as output.json")
+print("Data written to newfile.txt successfully.")
 
+print("\nAll file handling operations completed.")
 
-# Output:
-# ASSIGNMENT 2
-# CSV data has been converted to JSON and saved as output.json
+#Output
+"""
+1. WRITE OPERATION
+Data written successfully.
 
+2. READ OPERATION
+Hello, this is a Python file.
+This is an example of file handling.
 
-# ============================================================
-# ASSIGNMENT 3 - REGULAR EXPRESSIONS
-# ============================================================
+3. READLINE() OPERATION
+Hello, this is a Python file.
 
-import re
+4. READLINES() OPERATION
+['Hello, this is a Python file.\n', 'This is an example of file handling.']
 
-# Task 1: Words starting with capital letters
-text = "Python is Great. Regex is Powerful."
-result = re.findall(r"\b[A-Z]\w+", text)
+5. READ FILE LINE BY LINE
+Hello, this is a Python file.
+This is an example of file handling.
 
-print("\nASSIGNMENT 3")
-print("Task 1:", result)
+6. APPEND OPERATION
+Data appended successfully.
 
-# Output:
-# Task 1: ['Python', 'Great', 'Regex', 'Powerful']
+7. WRITE OPERATION
+Data written to newfile.txt successfully.
 
-
-# Task 2: Extract email addresses
-text = "Contact us at support@example.com or admin@test.org"
-emails = re.findall(r"[\w\.-]+@[\w\.-]+\.\w+", text)
-
-print("Task 2:", emails)
-
-# Output:
-# Task 2: ['support@example.com', 'admin@test.org']
-
-
-# Task 3: Mask sensitive number
-text = "My card number is 1234-5678-9876-5432"
-
-masked = re.sub(
-    r"\d{4}-\d{4}-\d{4}-(\d{4})",
-    r"****-****-****-\1",
-    text
-)
-
-print("Task 3:", masked)
-
-# Output:
-# Task 3: My card number is ****-****-****-5432
-
-
-# Task 4: Extract hashtags
-text = "Learning #Python #Regex #AI is fun!"
-hashtags = re.findall(r"#\w+", text)
-
-print("Task 4:", hashtags)
-
-# Output:
-# Task 4: ['#Python', '#Regex', '#AI']
-
-
-# Task 5: Validate phone number
-phone = "123-456-7890"
-
-if re.match(r"^\d{3}-\d{3}-\d{4}$", phone):
-    print("Task 5: Valid phone number")
-else:
-    print("Task 5: Invalid phone number")
-
-# Output:
-# Task 5: Valid phone number
-
-
-# ============================================================
-# ASSIGNMENT 4 - COMMAND LINE SCRIPT USING ARGPARSE
-# ============================================================
-
-import argparse
-
-parser = argparse.ArgumentParser(
-    description="Mini Calculator CLI"
-)
-
-parser.add_argument(
-    "num1",
-    type=float,
-    help="First number"
-)
-
-parser.add_argument(
-    "num2",
-    type=float,
-    help="Second number"
-)
-
-parser.add_argument(
-    "--operation",
-    choices=["add", "sub", "mul", "div"],
-    default="add",
-    help="Operation to perform"
-)
-
-args = parser.parse_args()
-
-if args.operation == "add":
-    result = args.num1 + args.num2
-
-elif args.operation == "sub":
-    result = args.num1 - args.num2
-
-elif args.operation == "mul":
-    result = args.num1 * args.num2
-
-elif args.operation == "div":
-    if args.num2 != 0:
-        result = args.num1 / args.num2
-    else:
-        result = "Error: Division by zero"
-
-print("\nASSIGNMENT 4")
-print("Result:", result)
-
-
-# Example command:
-# python calculator_cli.py 10 5 --operation mul
-
-# Output:
-# ASSIGNMENT 4
-# Result: 50.0
+All file handling operations completed.
+"""
