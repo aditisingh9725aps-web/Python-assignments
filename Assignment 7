@@ -1,1 +1,205 @@
+# ============================================================
+# UNIT 3 - ALL ASSIGNMENTS
+# Assignment 7 parts( 1, 2, 3 and 4 )
+# ============================================================
 
+
+# ============================================================
+# ASSIGNMENT 1 - FILE HANDLING
+# ============================================================
+
+# Create sample input.txt file
+with open("input.txt", "w") as f:
+    f.write("Python is powerful.\n")
+    f.write("It is widely used in AI.\n")
+    f.write("File handling is essential.\n")
+    f.write("This is the fourth line.\n")
+
+# Read data from input.txt
+with open("input.txt", "r") as f:
+    lines = f.readlines()
+
+# Count total number of lines
+line_count = len(lines)
+
+# Extract first two lines
+first_two = lines[:2]
+
+# Write first two lines into output.txt
+with open("output.txt", "w") as f:
+    f.writelines(first_two)
+
+print("ASSIGNMENT 1")
+print("Total number of lines in input file:", line_count)
+print("First two lines have been written to output.txt")
+
+# Output:
+# ASSIGNMENT 1
+# Total number of lines in input file: 4
+# First two lines have been written to output.txt
+
+
+# ============================================================
+# ASSIGNMENT 2 - CSV TO JSON CONVERSION
+# ============================================================
+
+import csv
+import json
+
+# Create sample input.csv file
+with open("input.csv", "w", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow(["Name", "Age", "City"])
+    writer.writerow(["Rashmi", 30, "Pune"])
+    writer.writerow(["Amit", 25, "Mumbai"])
+    writer.writerow(["Sneha", 28, "Nashik"])
+
+# Read data from CSV file
+csv_data = []
+
+with open("input.csv", "r") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        csv_data.append(row)
+
+# Convert CSV data to JSON
+json_data = json.dumps(csv_data, indent=4)
+
+# Write JSON data to output.json
+with open("output.json", "w") as f:
+    f.write(json_data)
+
+print("\nASSIGNMENT 2")
+print("CSV data has been converted to JSON and saved as output.json")
+
+# Output:
+# ASSIGNMENT 2
+# CSV data has been converted to JSON and saved as output.json
+
+
+# ============================================================
+# ASSIGNMENT 3 - REGULAR EXPRESSIONS
+# ============================================================
+
+import re
+
+# Task 1: Count Words Starting with Capital Letters
+text = "Python is Great. Regex is Powerful."
+result = re.findall(r"\b[A-Z]\w+", text)
+
+print("\nASSIGNMENT 3")
+print("Task 1:", result)
+
+# Output:
+# Task 1: ['Python', 'Great', 'Regex', 'Powerful']
+
+
+# Task 2: Extract All Email Addresses
+text = "Contact us at support@example.com or admin@test.org"
+emails = re.findall(r"[\w\.-]+@[\w\.-]+\.\w+", text)
+
+print("Task 2:", emails)
+
+# Output:
+# Task 2: ['support@example.com', 'admin@test.org']
+
+
+# Task 3: Mask Sensitive Numbers
+text = "My card number is 1234-5678-9876-5432"
+
+masked = re.sub(
+    r"\d{4}-\d{4}-\d{4}-(\d{4})",
+    r"****-****-****-\1",
+    text
+)
+
+print("Task 3:", masked)
+
+# Output:
+# Task 3: My card number is ****-****-****-5432
+
+
+# Task 4: Extract Hashtags
+text = "Learning #Python #Regex #AI is fun!"
+hashtags = re.findall(r"#\w+", text)
+
+print("Task 4:", hashtags)
+
+# Output:
+# Task 4: ['#Python', '#Regex', '#AI']
+
+
+# Task 5: Validate Phone Number
+phone = "123-456-7890"
+
+if re.match(r"^\d{3}-\d{3}-\d{4}$", phone):
+    print("Task 5: Valid phone number")
+else:
+    print("Task 5: Invalid phone number")
+
+# Output:
+# Task 5: Valid phone number
+
+
+# ============================================================
+# ASSIGNMENT 4 - COMMAND-LINE SCRIPT USING ARGPARSE
+# ============================================================
+
+import argparse
+import sys
+
+# Example command-line arguments for Jupyter/Colab
+sys.argv = ["calculator_cli.py", "10", "5", "--operation", "mul"]
+
+# Create parser
+parser = argparse.ArgumentParser(
+    description="Mini Calculator CLI"
+)
+
+# Add positional arguments
+parser.add_argument(
+    "num1",
+    type=float,
+    help="First number"
+)
+
+parser.add_argument(
+    "num2",
+    type=float,
+    help="Second number"
+)
+
+# Add optional operation argument
+parser.add_argument(
+    "--operation",
+    choices=["add", "sub", "mul", "div"],
+    default="add",
+    help="Operation to perform (default: add)"
+)
+
+# Parse arguments
+args = parser.parse_args()
+
+# Perform calculation
+if args.operation == "add":
+    result = args.num1 + args.num2
+
+elif args.operation == "sub":
+    result = args.num1 - args.num2
+
+elif args.operation == "mul":
+    result = args.num1 * args.num2
+
+elif args.operation == "div":
+    if args.num2 != 0:
+        result = args.num1 / args.num2
+    else:
+        result = "Error: Division by zero"
+
+# Display result
+print("\nASSIGNMENT 4")
+print(f"Result: {result}")
+
+# Output:
+# ASSIGNMENT 4
+# Result: 50.0
