@@ -1,25 +1,23 @@
 # ============================================================
-# UNIT 3 - ALL ASSIGNMENTS
-# Assignment 7 parts( 1, 2, 3 and 4 )
+# UNIT 3 - PYTHON ASSIGNMENTS
 # ============================================================
-
 
 # ============================================================
 # ASSIGNMENT 1 - FILE HANDLING
 # ============================================================
 
-# Create sample input.txt file
+# Create input.txt
 with open("input.txt", "w") as f:
     f.write("Python is powerful.\n")
     f.write("It is widely used in AI.\n")
     f.write("File handling is essential.\n")
     f.write("This is the fourth line.\n")
 
-# Read data from input.txt
+# Read the file
 with open("input.txt", "r") as f:
     lines = f.readlines()
 
-# Count total number of lines
+# Count lines
 line_count = len(lines)
 
 # Extract first two lines
@@ -30,13 +28,14 @@ with open("output.txt", "w") as f:
     f.writelines(first_two)
 
 print("ASSIGNMENT 1")
-print("Total number of lines in input file:", line_count)
-print("First two lines have been written to output.txt")
+print("Total number of lines:", line_count)
+print("First two lines written to output.txt")
+
 
 # Output:
 # ASSIGNMENT 1
-# Total number of lines in input file: 4
-# First two lines have been written to output.txt
+# Total number of lines: 4
+# First two lines written to output.txt
 
 
 # ============================================================
@@ -46,7 +45,7 @@ print("First two lines have been written to output.txt")
 import csv
 import json
 
-# Create sample input.csv file
+# Create input.csv
 with open("input.csv", "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerow(["Name", "Age", "City"])
@@ -54,7 +53,7 @@ with open("input.csv", "w", newline="") as f:
     writer.writerow(["Amit", 25, "Mumbai"])
     writer.writerow(["Sneha", 28, "Nashik"])
 
-# Read data from CSV file
+# Read CSV file
 csv_data = []
 
 with open("input.csv", "r") as f:
@@ -62,15 +61,16 @@ with open("input.csv", "r") as f:
     for row in reader:
         csv_data.append(row)
 
-# Convert CSV data to JSON
+# Convert to JSON
 json_data = json.dumps(csv_data, indent=4)
 
-# Write JSON data to output.json
+# Write JSON file
 with open("output.json", "w") as f:
     f.write(json_data)
 
 print("\nASSIGNMENT 2")
 print("CSV data has been converted to JSON and saved as output.json")
+
 
 # Output:
 # ASSIGNMENT 2
@@ -83,7 +83,7 @@ print("CSV data has been converted to JSON and saved as output.json")
 
 import re
 
-# Task 1: Count Words Starting with Capital Letters
+# Task 1: Words starting with capital letters
 text = "Python is Great. Regex is Powerful."
 result = re.findall(r"\b[A-Z]\w+", text)
 
@@ -94,7 +94,7 @@ print("Task 1:", result)
 # Task 1: ['Python', 'Great', 'Regex', 'Powerful']
 
 
-# Task 2: Extract All Email Addresses
+# Task 2: Extract email addresses
 text = "Contact us at support@example.com or admin@test.org"
 emails = re.findall(r"[\w\.-]+@[\w\.-]+\.\w+", text)
 
@@ -104,7 +104,7 @@ print("Task 2:", emails)
 # Task 2: ['support@example.com', 'admin@test.org']
 
 
-# Task 3: Mask Sensitive Numbers
+# Task 3: Mask sensitive number
 text = "My card number is 1234-5678-9876-5432"
 
 masked = re.sub(
@@ -119,7 +119,7 @@ print("Task 3:", masked)
 # Task 3: My card number is ****-****-****-5432
 
 
-# Task 4: Extract Hashtags
+# Task 4: Extract hashtags
 text = "Learning #Python #Regex #AI is fun!"
 hashtags = re.findall(r"#\w+", text)
 
@@ -129,7 +129,7 @@ print("Task 4:", hashtags)
 # Task 4: ['#Python', '#Regex', '#AI']
 
 
-# Task 5: Validate Phone Number
+# Task 5: Validate phone number
 phone = "123-456-7890"
 
 if re.match(r"^\d{3}-\d{3}-\d{4}$", phone):
@@ -142,21 +142,15 @@ else:
 
 
 # ============================================================
-# ASSIGNMENT 4 - COMMAND-LINE SCRIPT USING ARGPARSE
+# ASSIGNMENT 4 - COMMAND LINE SCRIPT USING ARGPARSE
 # ============================================================
 
 import argparse
-import sys
 
-# Example command-line arguments for Jupyter/Colab
-sys.argv = ["calculator_cli.py", "10", "5", "--operation", "mul"]
-
-# Create parser
 parser = argparse.ArgumentParser(
     description="Mini Calculator CLI"
 )
 
-# Add positional arguments
 parser.add_argument(
     "num1",
     type=float,
@@ -169,18 +163,15 @@ parser.add_argument(
     help="Second number"
 )
 
-# Add optional operation argument
 parser.add_argument(
     "--operation",
     choices=["add", "sub", "mul", "div"],
     default="add",
-    help="Operation to perform (default: add)"
+    help="Operation to perform"
 )
 
-# Parse arguments
 args = parser.parse_args()
 
-# Perform calculation
 if args.operation == "add":
     result = args.num1 + args.num2
 
@@ -196,9 +187,12 @@ elif args.operation == "div":
     else:
         result = "Error: Division by zero"
 
-# Display result
 print("\nASSIGNMENT 4")
-print(f"Result: {result}")
+print("Result:", result)
+
+
+# Example command:
+# python calculator_cli.py 10 5 --operation mul
 
 # Output:
 # ASSIGNMENT 4
