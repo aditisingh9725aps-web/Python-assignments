@@ -18,3 +18,11 @@ Email addresses found:
 abc@gmail.com
 xyz123@yahoo.com
 """
+"""
+Output:
+Enter a text: Contact abc@gmail.com and xyz123@yahoo.com
+
+Email addresses found:
+abc@gmail.com
+xyz123@yahoo.com
+"""
